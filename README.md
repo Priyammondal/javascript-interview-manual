@@ -3172,6 +3172,8 @@ When managing parallel asynchronous pipelines, you must deploy the exact combina
     -   _Behavior:_ First-success optimization.
         
     -   _Result:_ Resolves as soon as the first successful promise resolves. It ignores all rejections completely unless every single promise fails.
+
+    -   _Interview drill:_ `Promise.race` settles on the first outcome, including a rejection; `Promise.any` fulfills on the first fulfillment. When implementing `promiseAny(iterable)`, how would you normalize values and thenables, handle empty input, and retain every rejection reason if all candidates fail? Use `Promise.resolve` for normalization and reject only then with an `AggregateError` whose `errors` stay in input iteration order—not completion order. Practice the edge cases with a [free question and full reference answer](https://frontendatlas.com/javascript/coding/js-promise-any).
         
 
 ## Architectural Ownership: Engine vs. Host
